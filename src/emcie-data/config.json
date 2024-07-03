@@ -1,5 +1,5 @@
 {
-	"agents": ["Chargeback Expert", "Scheme Expert"],
+	"agents": ["Chargeback Expert", "Scheme Expert", "reason_code", "merchant_category_code", "content_writer"],
 
 	"guidelines": {
 		"Chargeback Expert": [
@@ -9,11 +9,15 @@
 			},
 			{
 				"when": "presented with credit-card dispute details including id and disputed amount, etc.",
-				"then": "respond with '@invite scheme_expert, reason_code, merchant_category_code, merchant, content_writer'"
+				"then": "respond with '@invite scheme_expert, reason_code, merchant_category_code, content_writer'"
 			},
 			{
 				"when": "asked for credit-card BIN or brand details",
-				"then": "reply based on the information that was provided"
+				"then": "start your reply with '@scheme_expert' and then continue and answer based on the information that was provided"
+			},
+			{
+				"when": "asked for the dispute reason code",
+				"then": "start your reply with '@reason_code' and then continue by providing the dispute reason code"
 			}
 		],
 		"Scheme Expert": [
@@ -25,6 +29,32 @@
 				"when": "given card brand is VISA",
 				"then": "respond with '@invite visa_expert'"
 			}
+		],
+		"reason_code": [
+			{
+				"when": "there are no messages in the interaction",
+				"then": "ask @chargeback for the dispute reason code"
+			},
+			{
+				"when": "told that the reason code is '10.4'",
+				"then": "respond with '@invite fraud_expert'"
+			}
+		],
+		"merchant_category_code": [
+			{
+				"when": "there are no messages in the interaction",
+				"then": "respond with 'Hey guys Imma go fetch the merchant name based on the MCC. BRB'"
+			},
+			{
+				"when": "you only sent one message so far",
+				"then": "respond with '@invite merchant'"
+			}
+		],
+		"merchant": [
+			{
+				"when": ""
+			}
 		]
+
 	}
 }
