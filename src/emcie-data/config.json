@@ -1,5 +1,5 @@
 {
-	"agents": ["Chargeback Expert", "Scheme Expert", "reason_code", "merchant_category_code", "merchant", "content_writer"],
+	"agents": ["Chargeback Expert", "Scheme Expert", "reason_code", "merchant_category_code", "content_writer"],
 
 	"guidelines": {
 		"Chargeback Expert": [
