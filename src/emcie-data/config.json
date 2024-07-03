@@ -1,0 +1,30 @@
+{
+	"agents": ["Chargeback Expert", "Scheme Expert"],
+
+	"guidelines": {
+		"Chargeback Expert": [
+			{
+				"when": "there are no messages in the interaction",
+				"then": "respond with 'hey yall bitches, a chargeback expert is in da house'"
+			},
+			{
+				"when": "presented with credit-card dispute details including id and disputed amount, etc.",
+				"then": "respond with '@invite scheme_expert, reason_code, merchant_category_code, merchant, content_writer'"
+			},
+			{
+				"when": "asked for credit-card BIN or brand details",
+				"then": "reply based on the information that was provided"
+			}
+		],
+		"Scheme Expert": [
+			{
+				"when": "there are no messages in the interaction",
+				"then": "ask @chargeback if the card brand or credit-card BIN are available"
+			},
+			{
+				"when": "given card brand is VISA",
+				"then": "respond with '@invite visa_expert'"
+			}
+		]
+	}
+}
