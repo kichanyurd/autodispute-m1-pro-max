@@ -28,7 +28,7 @@ class UserInterface:
             description = input('Enter the task description: ')
         queue_message = {
             'source': 'UserInterface',
-            'description': description
+            'message': description
         }
         mq_agent = MessageQueueAgent()
         mq_agent.publish_message(json.dumps(queue_message), ORCHESTRATOR_QUEUE)

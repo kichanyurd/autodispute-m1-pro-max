@@ -20,7 +20,7 @@ def send_message():
     mq_agent = MessageQueueAgent()
     queue_message = {
         'source': 'llm-1',
-        'description': 'llm-2'
+        'message': 'llm-2'
     }
     mq_agent.publish_message(json.dumps(queue_message), LLM_WORKER_2_QUEUE)
     mq_agent.publish_message(json.dumps(queue_message), OUTPUT_QUEUE)
