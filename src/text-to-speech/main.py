@@ -1,6 +1,7 @@
 import logging
 from utils.mq_agent import MessageQueueAgent
 from utils.constants import TEXT_TO_SPEECH_QUEUE
+from polly_agent import text_to_speech 
 
 def _initialize():
     logging.basicConfig(level=logging.INFO)
@@ -8,8 +9,9 @@ def _initialize():
 
 def callback(ch, method, properties, body):
     try:
-        logging.info(f"Received {body}")
-        logging.info(body.decode())
+        message = body.decode()
+        logging.info(message)
+        text_to_speech(message)
     except:
         logging.exception("An error occured")
 

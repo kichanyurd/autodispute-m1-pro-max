@@ -1,5 +1,5 @@
-from uuid import uuid4 as uuid
 import json
+from uuid import uuid4 as uuid
 from datetime import datetime
 
 def create_file(content, source):
