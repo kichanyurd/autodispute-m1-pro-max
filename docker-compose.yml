@@ -1,0 +1,59 @@
+
+version: '3.4'
+
+services:
+  message-queue:
+    image: rabbitmq
+    ports: 
+      - 5672:5672
+  base:
+    image: asaf-base
+    build:
+      context: src/base
+    depends_on:
+      - message-queue
+    tty: true
+  ui:
+    image: ui
+    depends_on:
+      - base
+    build:
+      context: src/ui
+  output:
+    image: output
+    depends_on:
+      - base
+    build:
+      context: src/output
+  orchestrator:
+    image: orchestrator
+    depends_on:
+      - base
+    build:
+      context: src/orchestrator
+  text-to-speech:
+    image: text-to-speech
+    depends_on:
+      - base
+    build:
+      context: src/text-to-speech
+  llm-worker-1:
+    image: llm-worker-1
+    depends_on:
+      - base
+    build:
+      context: src/llm-worker-1
+  llm-worker-2:
+    image: llm-worker-2
+    depends_on:
+      - base
+    build:
+      context: src/llm-worker-2
+  llm-worker-3:
+    image: llm-worker-3
+    depends_on:
+      - base
+    build:
+      context: src/llm-worker-3
+  
+  
